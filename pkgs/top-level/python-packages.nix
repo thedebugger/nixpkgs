@@ -4278,7 +4278,7 @@ in modules // {
       description = "pytest plugin with mechanisms for caching across test runs";
     };
   };
-  
+
   pytestdjango = buildPythonPackage rec {
     name = "pytest-django-${version}";
     version = "2.9.1";
@@ -4287,7 +4287,7 @@ in modules // {
       url = "mirror://pypi/p/pytest-django/${name}.tar.gz";
       sha256 = "1mmc7zsz3dlhs6sx4sppkj1vgshabi362r1a8b8wpj1qfximpqcb";
     };
-    
+
     # doing this to allow depending packages to find
     # pytest's binaries
     pytest = self.pytest;
@@ -6921,7 +6921,7 @@ in modules // {
       license = licenses.lgpl3;
     };
   };
-		  
+
 
   pathtools = buildPythonPackage rec {
     name = "pathtools-${version}";
@@ -19917,7 +19917,7 @@ in modules // {
   setuptools_scm_18 = self.setuptools_scm.override rec {
     name = "setuptools_scm-${version}";
     version = "1.8.0";
-    
+
     # tests fail: ImportError: cannot import name 'find_files'
     disabled = isPy35;
 
@@ -26943,6 +26943,23 @@ in modules // {
       description = "A client side encrypted pastebin";
       homepage = "http://0bin.net/";
       license = licenses.wtfpl;
+    };
+  };
+
+  uptime = buildPythonPackage rec {
+    name = "uptime-${version}";
+    version = "3.0.1";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "Cairnarvon";
+      repo = "uptime";
+      rev = "1ddfd06bb300c00e6dc4bd2a9ddf9bf1aa27b1bb";
+      sha256 = "148rqj0asw65c3z4whnqphfmkhlm181p296b7pxc1x79n97gn1pf";
+    };
+
+    meta = {
+      description = "Cross-platform uptime library for the Python";
+      homepage = "https://github.com/Cairnarvon/uptime";
     };
   };
 }
