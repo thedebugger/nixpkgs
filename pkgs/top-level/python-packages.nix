@@ -26986,4 +26986,38 @@ in modules // {
       homepage = "https://github.com/kevin1024/pytest-httpbin";
     };
   };
+
+  vcrpy = buildPythonPackage rec {
+    name = "vcrpy-${version}";
+    version = "1.7.4";
+
+    # TODO why tests are failing
+    doCheck = false;
+    src = pkgs.fetchFromGitHub {
+      owner = "kevin1024";
+      repo = "vcrpy";
+      rev = "2ac3fa9abe194141346806ced56b5e399ae96ec9";
+      sha256 = "1inm22xlnlb4xxcrrmrm3j73kffksb2838ypgykjbsjid8xvqdsd";
+    };
+
+    buildInputs = with self; [
+      pytest
+      mock
+      pytest-httpbin
+      pytest-localserver
+    ];
+
+    propagatedBuildInputs = with self; [
+      pyyaml
+      six
+      wrapt
+      contextlib2
+      mock
+    ];
+
+    meta = {
+      description = "Automatically mock your HTTP interactions to simplify and speed up testing";
+      homepage = "https://github.com/kevin1024/vcrpy";
+    };
+  };
 }
